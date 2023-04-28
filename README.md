@@ -1,7 +1,14 @@
 # accumulativeSVF
 These codes calculates SVF from Insta360 cameras.
 
+[Required environment]
+Python 3.7
+Packages used: msnet, gluoncv, decord, numpy, opencv, os, math, pandas
+
+The dataset used for segmentation: deeplab_resnest269_ade
+
 [Functions in the file]
+
 VideoToPic(filename,pic_folder,file_basename)
   Extracts images of a video (filename) by every second and output the images to a folder (pic_folder), named with a basename (file_basename).
 
