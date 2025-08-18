@@ -24,15 +24,15 @@ Square, black and white image, only containing black or white pixels. The image 
 
 Currently, three functions are included.
 
-- calVF_rayman(img_path,resize_scale)
+- `calVF_rayman(img_path,resize_scale)`
 
 This algorithm should give a similar output as Rayman software. It follows the algorithm described in `Rayman manual` p44.
 
-- calVF_rayman_p(img_path,resize_scale)
+- `calVF_rayman_p(img_path,resize_scale)`
 
 As discussed by `Hämmerle et al. (2011)` and described in `Rayman manual` p44-45, incorporating a calibration of zenith angle will be necessary in some occasions. This function implements the algorithm with a zenith angle calibration. The output from this function should be similar to the below JW1984 algorithm.
 
-- calVF_JW1984(img_path,resize_scale,ring_no)
+- `calVF_JW1984(img_path,resize_scale,ring_no)`
 
 This function follows algorithm by `Johnson and Watson (1984)`. When using an image, this algorithm uses rings from the image center to calculate the view factor, and is therefore sensitive to the image size and ring_no parameter.
 
@@ -67,6 +67,6 @@ This implementation was first used in this below work, calculating SVF profile f
 
 Li, Y., Li, Z., & Ren, C. (2025). Diversity of summertime thermal and environmental perceptions in residential public spaces: A walking-based assessment in Hong Kong’s Public Housing Estates. Building and Environment, 112594.
 
-Please consider the below description when using this package in a publication.
+Please consider the below description when using this package in a publication. It is strongly suggested to specify which algorithm you are using, considering the nuances stated above.
 
 "View factor is calculated following the algorithm of Rayman (Matzarakis et al., 2007, 2010), implemented in Python (Li et al., 2025)."
