@@ -66,7 +66,7 @@ Matzarakis, A., Rutz, F., & Mayer, H. (2007). Modelling radiation fluxes in simp
 
 Matzarakis, A., Rutz, F., & Mayer, H. (2010). Modelling radiation fluxes in simple and complex environments: Basics of the RayMan model. International Journal of Biometeorology, 54(2), 131–139.
 
-## Usage
+## Note
 
 This implementation was first used in this below work, calculating SVF profile from panoramic videos.
 
