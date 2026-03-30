@@ -50,25 +50,21 @@ if uploaded_files:
     progress_bar = st.progress(0)
     
     for i, uploaded_file in enumerate(uploaded_files):
-        # Check if this file is already in our results to avoid duplicates
         if any(d['Filename'] == uploaded_file.name for d in st.session_state.results_data):
             continue
 
         temp_path = f"temp_{uploaded_file.name}"
-        # file_bytes = uploaded_file.getvalue()
         
-        # with open(temp_path, "wb") as f:
-        #     f.write(file_bytes)
+        with open(temp_path, "wb") as f:
+            f.write(uploaded_file.getbuffer())
 
         try:
-            # Run Algorithms (extracting [0] from returned tuple)
+            # Run Algorithms
             res_rayman = SVF.calVF_rayman(temp_path, (resize_dim, resize_dim))[0]
             res_rayman_p = SVF.calVF_rayman_p(temp_path, (resize_dim, resize_dim))[0]
             res_jw = SVF.calVF_JW1984(temp_path, (resize_dim, resize_dim), ring_no=ring_num)[0]
 
-            # Append to session state
             st.session_state.results_data.append({
-                # "Preview": file_bytes,
                 "Filename": uploaded_file.name,
                 "Rayman_SVF": round(res_rayman, 4),
                 "Calibrated_Rayman": round(res_rayman_p, 4),
@@ -90,7 +86,6 @@ if st.session_state.results_data:
     st.dataframe(
         df,
         column_config={
-            "Preview": st.column_config.ImageColumn("Preview", help="Image Thumbnail"),
             "Rayman_SVF": st.column_config.NumberColumn(format="%.4f"),
             "Calibrated_Rayman": st.column_config.NumberColumn(format="%.4f"),
             "JW1984": st.column_config.NumberColumn(format="%.4f"),
@@ -100,8 +95,8 @@ if st.session_state.results_data:
     )
 
     # --- 4. DOWNLOAD CSV REPORT ---
-    csv_df = df.drop(columns=["Preview"])
-    csv = csv_df.to_csv(index=False).encode('utf-8')
+    # No need to drop "Preview" anymore since it's not in the DataFrame
+    csv = df.to_csv(index=False).encode('utf-8')
     
     st.download_button(
         label="📥 Download Results as CSV",
