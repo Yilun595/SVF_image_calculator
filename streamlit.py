@@ -55,10 +55,10 @@ if uploaded_files:
             continue
 
         temp_path = f"temp_{uploaded_file.name}"
-        file_bytes = uploaded_file.getvalue()
+        # file_bytes = uploaded_file.getvalue()
         
-        with open(temp_path, "wb") as f:
-            f.write(file_bytes)
+        # with open(temp_path, "wb") as f:
+        #     f.write(file_bytes)
 
         try:
             # Run Algorithms (extracting [0] from returned tuple)
@@ -68,7 +68,7 @@ if uploaded_files:
 
             # Append to session state
             st.session_state.results_data.append({
-                "Preview": file_bytes,
+                # "Preview": file_bytes,
                 "Filename": uploaded_file.name,
                 "Rayman_SVF": round(res_rayman, 4),
                 "Calibrated_Rayman": round(res_rayman_p, 4),
